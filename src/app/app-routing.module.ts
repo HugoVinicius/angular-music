@@ -1,10 +1,10 @@
-import { GenerosComponent } from './component/generos/generos.component';
 import { TopartistaComponent } from './pages/topartista/topartista.component';
 import { TopmusicaComponent } from './pages/topmusica/topmusica.component';
 import { ArtistaComponent } from './pages/artista/artista.component';
 import { IndexComponent } from './pages/index/index.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { GenerosComponent } from './pages/generos/generos.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },

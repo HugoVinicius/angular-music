@@ -5,13 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './component/menu/menu.component';
-import { GenerosComponent } from './component/generos/generos.component';
 import { GeneroComponent } from './component/genero/genero.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { IndexComponent } from './pages/index/index.component';
 import { TopartistaComponent } from './pages/topartista/topartista.component';
 import { TopmusicaComponent } from './pages/topmusica/topmusica.component';
 import { ArtistaComponent } from './pages/artista/artista.component';
+import { GenerosComponent } from './pages/generos/generos.component';
 
 @NgModule({
   declarations: [
