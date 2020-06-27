@@ -133,12 +133,6 @@
   },
   "defaultProject": "angular-music",
   "cli": {
-<<<<<<< HEAD
     "analytics": "299ecb6b-fd58-422e-bece-f5469d7995f0"
   }
 }
-=======
-    "analytics": "03cddec9-0068-43d3-85e2-a715ede41475"
-  }
-}
->>>>>>> 5d14066781610fcc4ad48cc9c865a993807f7a19
