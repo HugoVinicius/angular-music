@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MusicApiService } from "./music-api.service";
+import { MusicApiService } from "../services/music-api.service";
 
 @Component({
   selector: 'app-root',
