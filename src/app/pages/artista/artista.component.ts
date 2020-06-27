@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artista.component.css']
 })
 export class ArtistaComponent implements OnInit {
+  searchLabel: string;
 
-  constructor() { }
+  constructor() { 
+    this.searchLabel = "Digite o nome do artista: ";
+  }
 
   ngOnInit(): void {
   }
