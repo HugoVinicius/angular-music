@@ -1,0 +1,10 @@
+<div>
+    <p>Escolha um gênero musical</p>
+    <ul>
+        <li *ngFor="let genre of genres">
+            <a (click)="onClickGenre(genre)">{{genre}}</a>
+        </li>
+    </ul>
+
+    <app-genero [name]="genreSel"></app-genero>
+</div>

@@ -5,9 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './component/menu/menu.component';
+import { GenerosComponent } from './component/generos/generos.component';
+import { GeneroComponent } from './component/genero/genero.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { IndexComponent } from './pages/index/index.component';
-import { GeneroComponent } from './pages/genero/genero.component';
 import { TopartistaComponent } from './pages/topartista/topartista.component';
 import { TopmusicaComponent } from './pages/topmusica/topmusica.component';
 import { ArtistaComponent } from './pages/artista/artista.component';
@@ -21,7 +22,10 @@ import { ArtistaComponent } from './pages/artista/artista.component';
     GeneroComponent,
     TopartistaComponent,
     TopmusicaComponent,
-    ArtistaComponent
+    ArtistaComponent,
+    GenerosComponent,
+    GeneroComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
