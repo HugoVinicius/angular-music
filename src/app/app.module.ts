@@ -8,6 +8,7 @@ import { MenuComponent } from './component/menu/menu.component';
 import { GenerosComponent } from './component/generos/generos.component';
 import { GeneroComponent } from './component/genero/genero.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { ArtistsComponent } from './component/artists/artists.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FooterComponent } from './component/footer/footer.component';
     MenuComponent,
     GenerosComponent,
     GeneroComponent,
-    FooterComponent
+    FooterComponent,
+    ArtistsComponent
   ],
   imports: [
     BrowserModule,
