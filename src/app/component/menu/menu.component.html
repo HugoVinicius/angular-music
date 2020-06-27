@@ -10,10 +10,11 @@
         </div>
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav uk-visible@s">
-                <li><a href="">Gêneros</a></li>
-                <li><a href="">Artistas</a></li>
-                <li><a href="">+Top Musicas</a></li>
-                <li><a href="">+Top Artistas</a></li>
+                <li><a routerLink="/" routerLinkActive="active">Principal</a></li>
+                <li><a routerLink="/generos" routerLinkActive="active">Gêneros</a></li>
+                <li><a routerLink="/artistas" routerLinkActive="active">Artistas</a></li>
+                <li><a routerLink="/top-musicas" routerLinkActive="active">+Top Musicas</a></li>
+                <li><a routerLink="/top-artistas" routerLinkActive="active">+Top Artistas</a></li>
             </ul>
             <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
         </div>
@@ -23,10 +24,11 @@
 <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
     <div class="uk-offcanvas-bar">
         <ul class="uk-nav">
-          <li><a href="">Gêneros</a></li>
-          <li><a href="">Artistas</a></li>
-          <li><a href="">+Top Musicas</a></li>
-          <li><a href="">+Top Artistas</a></li>
+            <li><a routerLink="/" routerLinkActive="active">Principal</a></li>
+            <li><a routerLink="/generos" routerLinkActive="active">Gêneros</a></li>
+            <li><a routerLink="/artistas" routerLinkActive="active">Artistas</a></li>
+            <li><a routerLink="/top-musicas" routerLinkActive="active">+Top Musicas</a></li>
+            <li><a routerLink="/top-artistas" routerLinkActive="active">+Top Artistas</a></li>
         </ul>
     </div>
 </div>
