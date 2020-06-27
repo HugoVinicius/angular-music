@@ -7,7 +7,7 @@ import { MusicApiService } from './services/music-api.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-music';
+  title = 'AngularMusic';
 
   constructor(private musicAPI: MusicApiService) {
     this.musicAPI.searchArtistsByGenre('rock', 1).subscribe(json => console.log(json));
