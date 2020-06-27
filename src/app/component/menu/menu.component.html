@@ -4,19 +4,18 @@
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
                 <li class="uk-active">
-                    <a href="#"><img src="assets/img/logo.png" width="50" alt="Logo"><span class="titulo">Angular<strong>Music</strong></span></a>
+                    <a href="/"><img src="assets/img/logo.png" width="50" alt="Logo"><span class="titulo">Angular<strong>Music</strong></span></a>
                 </li>
             </ul>
         </div>
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav uk-visible@s">
-                <li><a routerLink="/" routerLinkActive="active">Principal</a></li>
                 <li><a routerLink="/generos" routerLinkActive="active">Gêneros</a></li>
                 <li><a routerLink="/artistas" routerLinkActive="active">Artistas</a></li>
                 <li><a routerLink="/top-musicas" routerLinkActive="active">+Top Musicas</a></li>
                 <li><a routerLink="/top-artistas" routerLinkActive="active">+Top Artistas</a></li>
             </ul>
-            <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+            <a routerLink="/" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
         </div>
     </nav>
 </header>
@@ -24,7 +23,6 @@
 <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
     <div class="uk-offcanvas-bar">
         <ul class="uk-nav">
-            <li><a routerLink="/" routerLinkActive="active">Principal</a></li>
             <li><a routerLink="/generos" routerLinkActive="active">Gêneros</a></li>
             <li><a routerLink="/artistas" routerLinkActive="active">Artistas</a></li>
             <li><a routerLink="/top-musicas" routerLinkActive="active">+Top Musicas</a></li>
