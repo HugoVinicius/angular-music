@@ -16,6 +16,7 @@ import { GenerosComponent } from './pages/generos/generos.component';
 import { SearchComponent } from './component/search/search.component';
 import { ResultArtistsComponent } from './component/result-artists/result-artists.component';
 import { ArtistDetailsComponent } from './component/artist-details/artist-details.component';
+import { AlbumDetailsComponent } from './component/album-details/album-details.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ArtistDetailsComponent } from './component/artist-details/artist-detail
     FooterComponent,
     SearchComponent,
     ResultArtistsComponent,
-    ArtistDetailsComponent
+    ArtistDetailsComponent,
+    AlbumDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -24,17 +24,21 @@ export class ArtistDetailsComponent implements OnInit {
       if(this.mbid && this.mbid !== ""){
         this.musicAPI.getArtistInfo(this.mbid).subscribe(json => {
           console.log(json);
-          this.artist = new ArtistModel(this.mbid, json.artist.name);
-          this.artist.biography = json.artist.bio.summary;
+          if(!json.error){
+            this.artist = new ArtistModel(this.mbid, json.artist.name);
+            this.artist.biography = json.artist.bio.summary;
+          }
         });
 
         this.musicAPI.getAlbumsByArtist(this.mbid, 10, 1).subscribe(json => {
           console.log(json);
-          json.topalbums.album.forEach(album => {
-            let newAlbum: AlbumModel = new AlbumModel(album.mbid, album.name);
-            newAlbum.urlImg = album.image[3]["#text"];
-            this.albuns.push(newAlbum);
-          });
+          if(!json.error){
+            json.topalbums.album.forEach(album => {
+              let newAlbum: AlbumModel = new AlbumModel(album.mbid, album.name);
+              newAlbum.urlImg = album.image[3]["#text"];
+              this.albuns.push(newAlbum);
+            });
+          }
         });
       }
     });

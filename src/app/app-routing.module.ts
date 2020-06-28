@@ -6,12 +6,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GenerosComponent } from './pages/generos/generos.component';
 import { ArtistDetailsComponent } from './component/artist-details/artist-details.component';
+import { AlbumDetailsComponent } from './component/album-details/album-details.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'generos', component: GenerosComponent },
   { path: 'artistas', component: ArtistaComponent },
   { path: 'artista/:id', component: ArtistDetailsComponent },
+  { path: 'artista/:id/albuns/:idAlbum', component: AlbumDetailsComponent },
   { path: 'top-musicas', component: TopmusicaComponent },
   { path: 'top-artistas', component: TopartistaComponent },
   { path: '**', component: IndexComponent },

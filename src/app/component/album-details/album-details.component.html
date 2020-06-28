@@ -1,0 +1,27 @@
+<div>
+    <div *ngIf="album, else unknown">
+        <div>
+            <h2>{{album.name}}</h2>
+            <h3>Artista: {{album.nameArtist}}</h3>
+            <img alt="capa do album" src="{{album.urlImg}}" />
+            <p>Lançamento: {{album.published}}</p>
+            <p>Duração: {{album.duration}}</p>
+            <span>Descrição: {{album.summary}}</span>
+        </div>
+
+        <div *ngIf="tracks">
+            <h3>Faixas ({{tracks.length}}):</h3>
+            <ol>
+                <li *ngFor="let track of tracks">
+                    <span>{{track.name}} ({{track.duration}})</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <ng-template #unknown>
+        <div>
+            <h3>Álbum não encontrado!</h3>
+        </div>
+    </ng-template>
+</div>
