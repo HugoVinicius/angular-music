@@ -10,6 +10,7 @@ import { MusicApiService } from 'src/app/services/music-api.service';
 export class ResultGenerosComponent implements OnInit {
   @Input() searchText: string;
   listArtists: ArtistModel[] = [];
+  loading: boolean = false;
 
   constructor(private musicAPI: MusicApiService) { }
 
@@ -23,11 +24,13 @@ export class ResultGenerosComponent implements OnInit {
   setListArtists = () => {
     this.listArtists = [];
     if(this.searchText && this.searchText !== ""){
+      this.loading = true;
       this.musicAPI.searchArtistsByGenre(this.searchText, 10, 1).subscribe(json => {
         console.log(json);
         json.topartists.artist.forEach(artist => {
           this.listArtists.push(new ArtistModel(artist.mbid, artist.name));
         });
+        this.loading = false;
       });
     }
   }
