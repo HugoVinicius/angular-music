@@ -17,7 +17,7 @@ const paramTag = (genre) => `&tag=${genre}`;
 const paramArtist = (artist) => `&artist=${artist}`;
 const paramMbid = (id) => `&mbid=${id}`;
 const paramPage = (pageNumber) => `&page=${pageNumber}`;
-const paramLimit = '&limit=20';
+const paramLimit = (limitValue) => `&limit=${limitValue}`;
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class MusicApiService {
 
   // procura os artistas por um nome de gênero
   searchArtistsByGenre(genre: string, pageNum: number): Observable<any> {
-    const params = paramTag(genre) + paramLimit + paramPage(pageNum);
+    const params = paramTag(genre) + paramLimit(20) + paramPage(pageNum);
     const url = baseUrl(methodTagTopArtists, params);
     console.log(url);
     return this.http.get(url);
@@ -43,8 +43,8 @@ export class MusicApiService {
   }
 
   // procura um artista pelo nome
-  searchArtistsByName(nameArtist: string, pageNum: number): Observable<any> {
-    const params = paramArtist(nameArtist);
+  searchArtistsByName(nameArtist: string, quantity: number, pageNum: number): Observable<any> {
+    const params = paramArtist(nameArtist) + paramLimit(quantity) + paramPage(pageNum);
     const url = baseUrl(methodArtistSearch, params);
     console.log(url);
     return this.http.get(url);

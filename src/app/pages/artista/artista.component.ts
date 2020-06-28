@@ -18,7 +18,6 @@ export class ArtistaComponent implements OnInit {
 
   handleValueSearch(text: string) {
     this.searchValue = text;
-    alert(this.searchValue);
   }
 
 }

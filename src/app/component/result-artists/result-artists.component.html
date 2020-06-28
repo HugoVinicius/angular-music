@@ -1,0 +1,10 @@
+<div>
+    <div *ngIf="searchText">
+        <p>Resultado para: {{searchText}}</p>
+        <ul>
+            <li *ngFor="let artist of listArtists">
+                <p>{{artist.name}}</p>
+            </li>
+        </ul>
+    </div>
+</div>
