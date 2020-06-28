@@ -1,5 +1,5 @@
 <div>
     <label>{{searchLabel}}</label>
-    <input />
-    <button>Pesquisar</button>
+    <input [(ngModel)]="valueInput" name="valueInput" />
+    <button (click)="onClickSearch()">Pesquisar</button>
 </div>

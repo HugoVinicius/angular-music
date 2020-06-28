@@ -1,5 +1,5 @@
 <div class="uk-container componente-page">
-  <app-search [searchLabel]="searchLabel"></app-search>
+  <app-search [searchLabel]="searchLabel" (onTextSearch)="handleValueSearch($event)"></app-search>
 
   <p>Resultado da busca:</p>
 </div>

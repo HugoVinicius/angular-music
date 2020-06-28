@@ -7,12 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistaComponent implements OnInit {
   searchLabel: string;
+  searchValue: string = "";
 
   constructor() { 
     this.searchLabel = "Digite o nome do artista: ";
   }
 
   ngOnInit(): void {
+  }
+
+  handleValueSearch(text: string) {
+    this.searchValue = text;
+    alert(this.searchValue);
   }
 
 }
