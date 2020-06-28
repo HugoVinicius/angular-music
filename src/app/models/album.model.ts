@@ -1,7 +1,7 @@
-export class ArtistModel  {
+export class AlbumModel  {
     id: string;
     name: string;
-    biography: string;
+    urlImg: string;
   
     constructor(
       id: string,

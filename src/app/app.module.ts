@@ -15,6 +15,7 @@ import { ArtistaComponent } from './pages/artista/artista.component';
 import { GenerosComponent } from './pages/generos/generos.component';
 import { SearchComponent } from './component/search/search.component';
 import { ResultArtistsComponent } from './component/result-artists/result-artists.component';
+import { ArtistDetailsComponent } from './component/artist-details/artist-details.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ResultArtistsComponent } from './component/result-artists/result-artist
     GeneroComponent,
     FooterComponent,
     SearchComponent,
-    ResultArtistsComponent
+    ResultArtistsComponent,
+    ArtistDetailsComponent
   ],
   imports: [
     BrowserModule,

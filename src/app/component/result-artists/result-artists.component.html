@@ -3,7 +3,9 @@
         <p>Resultado para: {{searchText}}</p>
         <ul>
             <li *ngFor="let artist of listArtists">
-                <p>{{artist.name}}</p>
+                <a routerLink="../artista/{{artist.id}}">
+                    <span>{{artist.name}}</span>
+                </a>
             </li>
         </ul>
     </div>

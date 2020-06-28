@@ -51,14 +51,14 @@ export class MusicApiService {
   }
 
   // recupera os albuns de um artista
-  getAlbumsByArtist(idArtist: string): Observable<any> {
-    const params = paramMbid(idArtist);
+  getAlbumsByArtist(idArtist: string, quantity: number, pageNum: number): Observable<any> {
+    const params = paramMbid(idArtist) + paramLimit(quantity) + paramPage(pageNum);
     const url = baseUrl(methodArtistTopAlbums, params);
     console.log(url);
     return this.http.get(url);
   }
 
-  getAlbumByArtist(idAlbum: string): Observable<any> {
+  getAlbum(idAlbum: string): Observable<any> {
     const params = paramMbid(idAlbum);
     const url = baseUrl(methodAlbumInfo, params);
     console.log(url);
