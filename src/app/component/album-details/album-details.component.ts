@@ -40,7 +40,7 @@ export class AlbumDetailsComponent implements OnInit {
         if(artistFind === "" && albumFind === "")
           this.musicAPI.getAlbum(this.mbid).subscribe(json => this.setAlbumJson(json));
         else
-        this.musicAPI.getAlbumByName(artistFind, albumFind).subscribe(json => this.setAlbumJson(json));
+          this.musicAPI.getAlbumByName(artistFind, albumFind).subscribe(json => this.setAlbumJson(json));
       }
     });
   }
@@ -48,7 +48,7 @@ export class AlbumDetailsComponent implements OnInit {
   setAlbumJson = (json) => {
     console.log(json);
     if(!json.error){
-      this.album = new AlbumModel(this.mbid, json.album.name);
+      this.album = new AlbumModel(json.album.mbid, json.album.name);
       this.album.nameArtist = json.album.artist;
       
       if(json.album.wiki){

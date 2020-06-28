@@ -20,41 +20,75 @@ export class ArtistDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.mbid = params["id"];
+      this.mbid = <string>params["id"];
+      let idxArtist = this.mbid.indexOf(ArtistModel.constArtistUrl);
+      let artistFind = "";
+      if(idxArtist >= 0){
+        artistFind = this.mbid.substring(idxArtist + ArtistModel.constArtistUrl.length, this.mbid.length);
+        console.log("Artista: " + artistFind);
+      }
+
       this.albuns = [];
 
       if(this.mbid && this.mbid !== ""){
         this.loadingArtist = true;
-        this.musicAPI.getArtistInfo(this.mbid).subscribe(json => {
-          console.log(json);
-          if(!json.error){
-            this.artist = new ArtistModel(this.mbid, json.artist.name);
-            this.artist.biography = json.artist.bio.summary;
-          }
-          this.loadingArtist = false;
-        });
+        if(artistFind === "")
+          this.musicAPI.getArtistInfo(this.mbid).subscribe(json => this.setArtistJson(json));
+        else 
+          this.musicAPI.getArtistInfoByName(artistFind).subscribe(json => this.setArtistJson(json));
 
         this.loadingAlbums = true;
-        this.musicAPI.getAlbumsByArtist(this.mbid, 10, 1).subscribe(json => {
-          console.log(json);
-          if(!json.error){
-            json.topalbums.album.forEach(album => {
-              let idAlbum = album.mbid;
-              if(!idAlbum){
-                let artistName = album.artist.name.replace("/", "%2F");
-                let albumName = album.name.replace("/", "%2F");
-                idAlbum = AlbumModel.constArtistUrl + artistName + AlbumModel.constAlbumUrl + albumName;
-              }
-
-              let newAlbum: AlbumModel = new AlbumModel(idAlbum, album.name);
-              newAlbum.urlImg = album.image[3]["#text"];
-              this.albuns.push(newAlbum);
-            });
-          }
-          this.loadingAlbums = false;
-        });
+        if(artistFind === "")
+          this.musicAPI.getAlbumsByArtist(this.mbid, 10, 1).subscribe(json => this.setAlbumJson(json));
+        else
+          this.musicAPI.getAlbumsByArtistName(artistFind, 10, 1).subscribe(json => this.setAlbumJson(json));
       }
     });
+  }
+
+  setArtistJson = (json) => {
+    console.log(json);
+    if(!json.error){
+      this.artist = new ArtistModel(json.mbid, json.artist.name);
+      this.artist.biography = json.artist.bio.summary;
+    }
+    this.loadingArtist = false;
+  }
+
+  setAlbumJson = (json) => {
+    console.log(json);
+    if(!json.error){
+      json.topalbums.album.forEach(album => {
+        let idAlbum = album.mbid;
+        if(!idAlbum){
+          let artistName = album.artist.name;
+          let albumName = album.name;
+          idAlbum = AlbumModel.constArtistUrl + artistName + AlbumModel.constAlbumUrl + albumName;
+          idAlbum = idAlbum.replace(/\//g, "%2F");
+        }
+
+        let newAlbum: AlbumModel = new AlbumModel(idAlbum, album.name);
+        newAlbum.urlImg = this.setAlbumImagem(album.image);
+
+        this.albuns.push(newAlbum);
+      });
+    }
+    this.loadingAlbums = false;
+  }
+
+  setAlbumImagem = (json) => {
+    let imgUrl = "";
+
+    let findImg = json.find(img => img.size === "extralarge");
+    if(findImg)
+        imgUrl = findImg["#text"];
+    else {
+      findImg = json.find(img => img.size === "large");
+      if(findImg)
+          imgUrl = findImg["#text"];
+    } 
+
+    return imgUrl;
   }
 
 }

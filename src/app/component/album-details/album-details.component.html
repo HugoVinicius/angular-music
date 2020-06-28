@@ -5,7 +5,7 @@
             <div>
                 <h2>{{album.name}}</h2>
                 <h3>Artista: <a routerLink="../../">{{album.nameArtist}}</a></h3>
-                <img alt="capa do album" src="{{album.urlImg}}" />
+                <img *ngIf="album.urlImg" alt="capa do album" src="{{album.urlImg}}" />
                 <p *ngIf="album.published">Lançamento: {{album.published}}</p>
                 <p>Duração: {{album.duration}}</p>
                 <span *ngIf="album.summary">Descrição: {{album.summary}}</span>

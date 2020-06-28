@@ -4,8 +4,7 @@
         <div *ngIf="artist, else unknown">
             <div>
                 <h2>{{artist.name}}</h2>
-                <p>Biografia:</p>
-                <span>{{artist.biography}}</span>
+                <p>Biografia: {{artist.biography}}</p>
             </div>
     
             <div>
@@ -16,7 +15,7 @@
                         <div>
                             <a routerLink="./albuns/{{album.id}}">
                                 <h6>{{album.name}}</h6>
-                                <img alt="capa do album" src="{{album.urlImg}}" />
+                                <img *ngIf="album.urlImg" alt="capa do album" src="{{album.urlImg}}" />
                             </a>
                         </div>
                     </li>

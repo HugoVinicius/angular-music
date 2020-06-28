@@ -51,6 +51,14 @@ export class MusicApiService {
     return this.http.get(url);
   }
 
+  // recupera informações do artista pelo seu nome
+  getArtistInfoByName(artist: string): Observable<any> {
+    const params = paramArtist(artist);
+    const url = baseUrl(methodArtistInfo, params);
+    console.log(url);
+    return this.http.get(url);
+  }
+
   // recupera os albuns de um artista
   getAlbumsByArtist(idArtist: string, quantity: number, pageNum: number): Observable<any> {
     const params = paramMbid(idArtist) + paramLimit(quantity) + paramPage(pageNum);
@@ -59,6 +67,15 @@ export class MusicApiService {
     return this.http.get(url);
   }
 
+    // recupera os albuns de um artista
+    getAlbumsByArtistName(artist: string, quantity: number, pageNum: number): Observable<any> {
+      const params = paramArtist(artist) + paramLimit(quantity) + paramPage(pageNum);
+      const url = baseUrl(methodArtistTopAlbums, params);
+      console.log(url);
+      return this.http.get(url);
+    }
+
+  // recupera informações do album pelo id
   getAlbum(idAlbum: string): Observable<any> {
     const params = paramMbid(idAlbum);
     const url = baseUrl(methodAlbumInfo, params);
@@ -66,6 +83,7 @@ export class MusicApiService {
     return this.http.get(url);
   }
 
+  // recupera informações do album pelo nome do artista e do album
   getAlbumByName(artist: string, album: string): Observable<any> {
     const params = paramArtist(artist) + paramAlbum(album);
     const url = baseUrl(methodAlbumInfo, params);

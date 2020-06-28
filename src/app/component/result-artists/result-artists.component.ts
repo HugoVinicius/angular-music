@@ -30,18 +30,29 @@ export class ResultArtistsComponent implements OnInit {
       if(this.searchByName){
         this.musicAPI.searchArtistsByName(this.searchText, 10, 1).subscribe(json => {
           console.log(json);
-          json.results.artistmatches.artist.forEach(artist => this.listArtists.push(new ArtistModel(artist.mbid, artist.name)));
+          json.results.artistmatches.artist.forEach(artist => this.setArtist(artist));
           this.loading = false;
         });
       }
       else{
         this.musicAPI.searchArtistsByGenre(this.searchText, 10, 1).subscribe(json => {
           console.log(json);
-          json.topartists.artist.forEach(artist => this.listArtists.push(new ArtistModel(artist.mbid, artist.name)));
+          json.topartists.artist.forEach(artist => this.setArtist(artist));
           this.loading = false;
         });
       }
     }
+  }
+
+  setArtist = (artist) => {
+
+    let idArtist = artist.mbid;
+    if(!idArtist){
+      let artistName = artist.name.replace(/\//g, "%2F");
+      idArtist = ArtistModel.constArtistUrl + artistName;
+    }
+
+    this.listArtists.push(new ArtistModel(idArtist, artist.name));
   }
 
 }
