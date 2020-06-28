@@ -14,6 +14,7 @@ export class AlbumDetailsComponent implements OnInit {
   album: AlbumModel;
   tracks: TrackModel[];
   durationAlbumInSeconds: number;
+  loadingAlbum: boolean = false;
 
   constructor(private route: ActivatedRoute, private musicAPI: MusicApiService) { }
 
@@ -34,6 +35,8 @@ export class AlbumDetailsComponent implements OnInit {
       }
 
       if(this.mbid && this.mbid !== ""){
+        this.loadingAlbum = true;
+
         if(artistFind === "" && albumFind === "")
           this.musicAPI.getAlbum(this.mbid).subscribe(json => this.setAlbumJson(json));
         else
@@ -71,6 +74,8 @@ export class AlbumDetailsComponent implements OnInit {
 
       this.album.duration = this.getDurationFormat(this.durationAlbumInSeconds);
     }
+
+    this.loadingAlbum = false;
   }
 
   getDurationFormat = (timeInSeconds: number) => {

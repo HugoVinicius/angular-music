@@ -1,27 +1,30 @@
 <div>
-    <div *ngIf="album, else unknown">
-        <div>
-            <h2>{{album.name}}</h2>
-            <h3>Artista: <a routerLink="../../">{{album.nameArtist}}</a></h3>
-            <img alt="capa do album" src="{{album.urlImg}}" />
-            <p *ngIf="album.published">Lançamento: {{album.published}}</p>
-            <p>Duração: {{album.duration}}</p>
-            <span *ngIf="album.summary">Descrição: {{album.summary}}</span>
+    <p *ngIf="loadingAlbum, else loaded">Carregando dados do álbum...</p>
+    <ng-template #loaded>
+        <div *ngIf="album, else unknown">
+            <div>
+                <h2>{{album.name}}</h2>
+                <h3>Artista: <a routerLink="../../">{{album.nameArtist}}</a></h3>
+                <img alt="capa do album" src="{{album.urlImg}}" />
+                <p *ngIf="album.published">Lançamento: {{album.published}}</p>
+                <p>Duração: {{album.duration}}</p>
+                <span *ngIf="album.summary">Descrição: {{album.summary}}</span>
+            </div>
+    
+            <div *ngIf="tracks">
+                <h3>Faixas ({{tracks.length}}):</h3>
+                <ol>
+                    <li *ngFor="let track of tracks">
+                        <span>{{track.name}} ({{track.duration}})</span>
+                    </li>
+                </ol>
+            </div>
         </div>
-
-        <div *ngIf="tracks">
-            <h3>Faixas ({{tracks.length}}):</h3>
-            <ol>
-                <li *ngFor="let track of tracks">
-                    <span>{{track.name}} ({{track.duration}})</span>
-                </li>
-            </ol>
-        </div>
-    </div>
-
-    <ng-template #unknown>
-        <div>
-            <h3>Álbum não encontrado!</h3>
-        </div>
+    
+        <ng-template #unknown>
+            <div>
+                <h3>Álbum não encontrado!</h3>
+            </div>
+        </ng-template>
     </ng-template>
 </div>

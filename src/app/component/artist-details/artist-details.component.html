@@ -1,29 +1,33 @@
 <div>
-    <div *ngIf="artist, else unknown">
-        <div>
-            <h2>{{artist.name}}</h2>
-            <p>Biografia:</p>
-            <span>{{artist.biography}}</span>
+    <p *ngIf="loadingArtist, else loaded">Carregando dados do artista...</p>
+    <ng-template #loaded>
+        <div *ngIf="artist, else unknown">
+            <div>
+                <h2>{{artist.name}}</h2>
+                <p>Biografia:</p>
+                <span>{{artist.biography}}</span>
+            </div>
+    
+            <div>
+                <h3>Álbuns:</h3>
+                <p *ngIf="loadingArtist">Carregando lista de álbuns do artista...</p>
+                <ul>
+                    <li *ngFor="let album of albuns">
+                        <div>
+                            <a routerLink="./albuns/{{album.id}}">
+                                <h6>{{album.name}}</h6>
+                                <img alt="capa do album" src="{{album.urlImg}}" />
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div>
-            <h3>Álbuns:</h3>
-            <ul>
-                <li *ngFor="let album of albuns">
-                    <div>
-                        <a routerLink="./albuns/{{album.id}}">
-                            <h6>{{album.name}}</h6>
-                            <img alt="capa do album" src="{{album.urlImg}}" />
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <ng-template #unknown>
-        <div>
-            <h3>Artista não encontrado!</h3>
-        </div>
+    
+        <ng-template #unknown>
+            <div>
+                <h3>Artista não encontrado!</h3>
+            </div>
+        </ng-template>
     </ng-template>
 </div>

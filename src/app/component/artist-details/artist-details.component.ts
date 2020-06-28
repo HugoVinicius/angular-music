@@ -13,6 +13,8 @@ export class ArtistDetailsComponent implements OnInit {
   mbid: string;
   artist: ArtistModel;
   albuns: AlbumModel[];
+  loadingArtist: boolean = false;
+  loadingAlbums: boolean = false;
 
   constructor(private route: ActivatedRoute, private musicAPI: MusicApiService) { }
 
@@ -22,14 +24,17 @@ export class ArtistDetailsComponent implements OnInit {
       this.albuns = [];
 
       if(this.mbid && this.mbid !== ""){
+        this.loadingArtist = true;
         this.musicAPI.getArtistInfo(this.mbid).subscribe(json => {
           console.log(json);
           if(!json.error){
             this.artist = new ArtistModel(this.mbid, json.artist.name);
             this.artist.biography = json.artist.bio.summary;
           }
+          this.loadingArtist = false;
         });
 
+        this.loadingAlbums = true;
         this.musicAPI.getAlbumsByArtist(this.mbid, 10, 1).subscribe(json => {
           console.log(json);
           if(!json.error){
@@ -46,6 +51,7 @@ export class ArtistDetailsComponent implements OnInit {
               this.albuns.push(newAlbum);
             });
           }
+          this.loadingAlbums = false;
         });
       }
     });
