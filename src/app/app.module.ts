@@ -16,7 +16,6 @@ import { SearchComponent } from './component/search/search.component';
 import { ResultArtistsComponent } from './component/result-artists/result-artists.component';
 import { ArtistDetailsComponent } from './component/artist-details/artist-details.component';
 import { AlbumDetailsComponent } from './component/album-details/album-details.component';
-import { ResultGenerosComponent } from './component/result-generos/result-generos.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +31,7 @@ import { ResultGenerosComponent } from './component/result-generos/result-genero
     SearchComponent,
     ResultArtistsComponent,
     ArtistDetailsComponent,
-    AlbumDetailsComponent,
-    ResultGenerosComponent
+    AlbumDetailsComponent
   ],
   imports: [
     BrowserModule,

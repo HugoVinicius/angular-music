@@ -9,7 +9,9 @@ import { MusicApiService } from 'src/app/services/music-api.service';
 })
 export class ResultArtistsComponent implements OnInit {
   @Input() searchText: string;
+  @Input() searchByName: boolean; // se true: pesquisa pelo nome do artista, se false pesquisa os artistas pelo genero
   listArtists: ArtistModel[] = [];
+  loading: boolean = false;
 
   constructor(private musicAPI: MusicApiService) { }
 
@@ -23,12 +25,22 @@ export class ResultArtistsComponent implements OnInit {
   setListArtists = () => {
     this.listArtists = [];
     if(this.searchText && this.searchText !== ""){
-      this.musicAPI.searchArtistsByName(this.searchText, 10, 1).subscribe(json => {
-        console.log(json);
-        json.results.artistmatches.artist.forEach(artist => {
-          this.listArtists.push(new ArtistModel(artist.mbid, artist.name));
+      this.loading = true;
+
+      if(this.searchByName){
+        this.musicAPI.searchArtistsByName(this.searchText, 10, 1).subscribe(json => {
+          console.log(json);
+          json.results.artistmatches.artist.forEach(artist => this.listArtists.push(new ArtistModel(artist.mbid, artist.name)));
+          this.loading = false;
         });
-      });
+      }
+      else{
+        this.musicAPI.searchArtistsByGenre(this.searchText, 10, 1).subscribe(json => {
+          console.log(json);
+          json.topartists.artist.forEach(artist => this.listArtists.push(new ArtistModel(artist.mbid, artist.name)));
+          this.loading = false;
+        });
+      }
     }
   }
 

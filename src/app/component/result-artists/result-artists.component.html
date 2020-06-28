@@ -1,6 +1,7 @@
 <div>
     <div *ngIf="searchText">
         <p>Resultado para: {{searchText}}</p>
+        <p *ngIf="loading">Carregando...</p>
         <ul>
             <li *ngFor="let artist of listArtists">
                 <a routerLink="../artista/{{artist.id}}">
