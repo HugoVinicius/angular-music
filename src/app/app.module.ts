@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './component/menu/menu.component';
-import { GeneroComponent } from './component/genero/genero.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { IndexComponent } from './pages/index/index.component';
 import { TopartistaComponent } from './pages/topartista/topartista.component';
@@ -17,6 +16,7 @@ import { SearchComponent } from './component/search/search.component';
 import { ResultArtistsComponent } from './component/result-artists/result-artists.component';
 import { ArtistDetailsComponent } from './component/artist-details/artist-details.component';
 import { AlbumDetailsComponent } from './component/album-details/album-details.component';
+import { ResultGenerosComponent } from './component/result-generos/result-generos.component';
 
 @NgModule({
   declarations: [
@@ -24,17 +24,16 @@ import { AlbumDetailsComponent } from './component/album-details/album-details.c
     MenuComponent,
     FooterComponent,
     IndexComponent,
-    GeneroComponent,
     TopartistaComponent,
     TopmusicaComponent,
     ArtistaComponent,
     GenerosComponent,
-    GeneroComponent,
     FooterComponent,
     SearchComponent,
     ResultArtistsComponent,
     ArtistDetailsComponent,
-    AlbumDetailsComponent
+    AlbumDetailsComponent,
+    ResultGenerosComponent
   ],
   imports: [
     BrowserModule,

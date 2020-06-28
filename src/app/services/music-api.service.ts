@@ -28,17 +28,9 @@ export class MusicApiService {
   constructor(private http: HttpClient) { }
 
   // procura os artistas por um nome de gênero
-  searchArtistsByGenre(genre: string, pageNum: number): Observable<any> {
-    const params = paramTag(genre) + paramLimit(20) + paramPage(pageNum);
+  searchArtistsByGenre(genre: string, quantity: number, pageNum: number): Observable<any> {
+    const params = paramTag(genre) + paramLimit(quantity) + paramPage(pageNum);
     const url = baseUrl(methodTagTopArtists, params);
-    console.log(url);
-    return this.http.get(url);
-  }
-
-  // recupera informações do artista pelo id
-  getArtistInfo(idArtist: string): Observable<any> {
-    const params = paramMbid(idArtist);
-    const url = baseUrl(methodArtistInfo, params);
     console.log(url);
     return this.http.get(url);
   }
@@ -47,6 +39,14 @@ export class MusicApiService {
   searchArtistsByName(nameArtist: string, quantity: number, pageNum: number): Observable<any> {
     const params = paramArtist(nameArtist) + paramLimit(quantity) + paramPage(pageNum);
     const url = baseUrl(methodArtistSearch, params);
+    console.log(url);
+    return this.http.get(url);
+  }
+
+  // recupera informações do artista pelo id
+  getArtistInfo(idArtist: string): Observable<any> {
+    const params = paramMbid(idArtist);
+    const url = baseUrl(methodArtistInfo, params);
     console.log(url);
     return this.http.get(url);
   }

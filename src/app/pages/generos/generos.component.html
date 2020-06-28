@@ -6,7 +6,8 @@
             <a (click)="onClickGenre(genre.tag)">{{genre.name}}</a>
         </li>
     </ul>
+    <app-search [searchLabel]="searchLabel" (onTextSearch)="handleValueSearch($event)"></app-search>
 
-    <app-genero [name]="genreSel"></app-genero>
+    <app-result-generos [searchText]="genreSel"></app-result-generos>
 </div>
 </div>

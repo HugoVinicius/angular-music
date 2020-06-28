@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MusicApiService } from '../../services/music-api.service';
-import { ArtistModel } from '../../models/artist.model';
+import { ArtistModel } from 'src/app/models/artist.model';
+import { MusicApiService } from 'src/app/services/music-api.service';
 
 @Component({
-  selector: 'app-genero',
-  templateUrl: './genero.component.html',
-  styleUrls: ['./genero.component.css']
+  selector: 'app-result-generos',
+  templateUrl: './result-generos.component.html',
+  styleUrls: ['./result-generos.component.css']
 })
-export class GeneroComponent implements OnInit {
-  @Input() name: string;
+export class ResultGenerosComponent implements OnInit {
+  @Input() searchText: string;
   listArtists: ArtistModel[] = [];
 
   constructor(private musicAPI: MusicApiService) { }
@@ -22,8 +22,8 @@ export class GeneroComponent implements OnInit {
 
   setListArtists = () => {
     this.listArtists = [];
-    if(this.name && this.name !== ""){
-      this.musicAPI.searchArtistsByGenre(this.name, 1).subscribe(json => {
+    if(this.searchText && this.searchText !== ""){
+      this.musicAPI.searchArtistsByGenre(this.searchText, 10, 1).subscribe(json => {
         console.log(json);
         json.topartists.artist.forEach(artist => {
           this.listArtists.push(new ArtistModel(artist.mbid, artist.name));
