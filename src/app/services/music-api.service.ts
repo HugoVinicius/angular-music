@@ -11,6 +11,8 @@ const methodArtistInfo = 'artist.getinfo';
 const methodArtistSearch = 'artist.search';
 const methodArtistTopAlbums = 'artist.gettopalbums';
 const methodAlbumInfo = 'album.getinfo';
+const methodChartTopArtists = 'chart.gettopartists';
+const methodChartTopTracks = 'chart.gettoptracks';
 
 // params
 const paramTag = (genre) => `&tag=${genre}`;
@@ -67,13 +69,13 @@ export class MusicApiService {
     return this.http.get(url);
   }
 
-    // recupera os albuns de um artista
-    getAlbumsByArtistName(artist: string, quantity: number, pageNum: number): Observable<any> {
-      const params = paramArtist(artist) + paramLimit(quantity) + paramPage(pageNum);
-      const url = baseUrl(methodArtistTopAlbums, params);
-      console.log(url);
-      return this.http.get(url);
-    }
+  // recupera os albuns de um artista
+  getAlbumsByArtistName(artist: string, quantity: number, pageNum: number): Observable<any> {
+    const params = paramArtist(artist) + paramLimit(quantity) + paramPage(pageNum);
+    const url = baseUrl(methodArtistTopAlbums, params);
+    console.log(url);
+    return this.http.get(url);
+  }
 
   // recupera informações do album pelo id
   getAlbum(idAlbum: string): Observable<any> {
@@ -87,6 +89,22 @@ export class MusicApiService {
   getAlbumByName(artist: string, album: string): Observable<any> {
     const params = paramArtist(artist) + paramAlbum(album);
     const url = baseUrl(methodAlbumInfo, params);
+    console.log(url);
+    return this.http.get(url);
+  }
+
+  // recupera os artistas mais populares
+  getTopArtist(quantity: number, pageNum: number): Observable<any> {
+    const params = paramLimit(quantity) + paramPage(pageNum);
+    const url = baseUrl(methodChartTopArtists, params);
+    console.log(url);
+    return this.http.get(url);
+  }
+
+  // recupera as musicas mais populares
+  getTopTracks(quantity: number, pageNum: number): Observable<any> {
+    const params = paramLimit(quantity) + paramPage(pageNum);
+    const url = baseUrl(methodChartTopTracks, params);
     console.log(url);
     return this.http.get(url);
   }

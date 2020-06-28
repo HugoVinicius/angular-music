@@ -1,3 +1,11 @@
 <div class="uk-container componente-page">
-  <p>topartista works!</p>
+  <h3>TOP 100 - Artistas</h3>
+  <p *ngIf="loading">Carregando...</p>
+  <ol>
+      <li *ngFor="let artist of artists">
+        <a routerLink="../artista/{{artist.id}}">
+            <span>{{artist.name}}</span>
+        </a>
+      </li>
+  </ol>
 </div>
