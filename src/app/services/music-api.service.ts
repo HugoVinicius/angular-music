@@ -15,6 +15,7 @@ const methodAlbumInfo = 'album.getinfo';
 // params
 const paramTag = (genre) => `&tag=${genre}`;
 const paramArtist = (artist) => `&artist=${artist}`;
+const paramAlbum= (album) => `&album=${album}`;
 const paramMbid = (id) => `&mbid=${id}`;
 const paramPage = (pageNumber) => `&page=${pageNumber}`;
 const paramLimit = (limitValue) => `&limit=${limitValue}`;
@@ -60,6 +61,13 @@ export class MusicApiService {
 
   getAlbum(idAlbum: string): Observable<any> {
     const params = paramMbid(idAlbum);
+    const url = baseUrl(methodAlbumInfo, params);
+    console.log(url);
+    return this.http.get(url);
+  }
+
+  getAlbumByName(artist: string, album: string): Observable<any> {
+    const params = paramArtist(artist) + paramAlbum(album);
     const url = baseUrl(methodAlbumInfo, params);
     console.log(url);
     return this.http.get(url);

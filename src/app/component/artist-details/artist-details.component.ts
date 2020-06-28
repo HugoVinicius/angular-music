@@ -34,7 +34,14 @@ export class ArtistDetailsComponent implements OnInit {
           console.log(json);
           if(!json.error){
             json.topalbums.album.forEach(album => {
-              let newAlbum: AlbumModel = new AlbumModel(album.mbid, album.name);
+              let idAlbum = album.mbid;
+              if(!idAlbum){
+                let artistName = album.artist.name.replace("/", "%2F");
+                let albumName = album.name.replace("/", "%2F");
+                idAlbum = AlbumModel.constArtistUrl + artistName + AlbumModel.constAlbumUrl + albumName;
+              }
+
+              let newAlbum: AlbumModel = new AlbumModel(idAlbum, album.name);
               newAlbum.urlImg = album.image[3]["#text"];
               this.albuns.push(newAlbum);
             });

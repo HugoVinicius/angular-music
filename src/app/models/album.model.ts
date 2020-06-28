@@ -6,6 +6,8 @@ export class AlbumModel  {
     summary: string;
     published: string;
     duration: string;
+    static readonly constArtistUrl = "artist:";
+    static readonly constAlbumUrl = "-album:";
   
     constructor(
       id: string,

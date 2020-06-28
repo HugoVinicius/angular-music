@@ -19,36 +19,58 @@ export class AlbumDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.mbid = params["idAlbum"];
+      this.mbid = <string>params["idAlbum"];
+
+      let idxArtist = this.mbid.indexOf(AlbumModel.constArtistUrl);
+      let idxAlbum = this.mbid.indexOf(AlbumModel.constAlbumUrl);
+
+      let artistFind = "";
+      let albumFind = "";
+      if(idxArtist >= 0 && idxAlbum >= 0){
+        artistFind = this.mbid.substring(idxArtist + AlbumModel.constArtistUrl.length, idxAlbum);
+        albumFind = this.mbid.substring(idxAlbum + AlbumModel.constAlbumUrl.length, this.mbid.length);
+        console.log("Artista: " + artistFind);
+        console.log("Album: " + albumFind);
+      }
 
       if(this.mbid && this.mbid !== ""){
-        this.musicAPI.getAlbum(this.mbid).subscribe(json => {
-          console.log(json);
-          if(!json.error){
-            this.album = new AlbumModel(this.mbid, json.album.name);
-            this.album.nameArtist = json.album.artist;
-            this.album.summary = json.album.wiki.summary;
-            this.album.published = json.album.wiki.published;
-
-            let findImg = json.album.image.find(img => img.size === "mega");
-            if(findImg)
-              this.album.urlImg = findImg["#text"];
-
-            this.durationAlbumInSeconds = 0;
-            this.tracks = [];
-            json.album.tracks.track.forEach(track => {
-              let timeInSeconds = parseInt(track.duration);
-              this.durationAlbumInSeconds += timeInSeconds;
-              let newTrack: TrackModel = new TrackModel(track.name, this.getDurationFormat(timeInSeconds));
-              this.tracks.push(newTrack);
-            });
-
-            this.album.duration = this.getDurationFormat(this.durationAlbumInSeconds);
-
-          }
-        });
+        if(artistFind === "" && albumFind === "")
+          this.musicAPI.getAlbum(this.mbid).subscribe(json => this.setAlbumJson(json));
+        else
+        this.musicAPI.getAlbumByName(artistFind, albumFind).subscribe(json => this.setAlbumJson(json));
       }
     });
+  }
+
+  setAlbumJson = (json) => {
+    console.log(json);
+    if(!json.error){
+      this.album = new AlbumModel(this.mbid, json.album.name);
+      this.album.nameArtist = json.album.artist;
+      
+      if(json.album.wiki){
+       if(json.album.wiki.summary)
+        this.album.summary = json.album.wiki.summary;
+
+      if(json.album.wiki.published)
+        this.album.published = json.album.wiki.published;
+      }
+
+      let findImg = json.album.image.find(img => img.size === "mega");
+      if(findImg)
+        this.album.urlImg = findImg["#text"];
+
+      this.durationAlbumInSeconds = 0;
+      this.tracks = [];
+      json.album.tracks.track.forEach(track => {
+        let timeInSeconds = parseInt(track.duration);
+        this.durationAlbumInSeconds += timeInSeconds;
+        let newTrack: TrackModel = new TrackModel(track.name, this.getDurationFormat(timeInSeconds));
+        this.tracks.push(newTrack);
+      });
+
+      this.album.duration = this.getDurationFormat(this.durationAlbumInSeconds);
+    }
   }
 
   getDurationFormat = (timeInSeconds: number) => {

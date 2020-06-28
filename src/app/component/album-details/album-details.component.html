@@ -2,11 +2,11 @@
     <div *ngIf="album, else unknown">
         <div>
             <h2>{{album.name}}</h2>
-            <h3>Artista: {{album.nameArtist}}</h3>
+            <h3>Artista: <a routerLink="../../">{{album.nameArtist}}</a></h3>
             <img alt="capa do album" src="{{album.urlImg}}" />
-            <p>Lançamento: {{album.published}}</p>
+            <p *ngIf="album.published">Lançamento: {{album.published}}</p>
             <p>Duração: {{album.duration}}</p>
-            <span>Descrição: {{album.summary}}</span>
+            <span *ngIf="album.summary">Descrição: {{album.summary}}</span>
         </div>
 
         <div *ngIf="tracks">
