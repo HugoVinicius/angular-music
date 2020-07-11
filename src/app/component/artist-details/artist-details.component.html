@@ -1,14 +1,14 @@
 <div class="uk-container">
     <p *ngIf="loadingArtist, else loaded">Carregando dados do artista...</p>
     <ng-template #loaded>
-        <div *ngIf="artist, else unknown">
+        <div *ngIf="artist, else unknown" class="">
             <div>
-                <h2>{{artist.name}}</h2>
+                <h2 class="uk-text-center">{{artist.name}}</h2>
                 <p>Biografia: {{artist.biography}}</p>
             </div>
 
             <div>
-                <h3>Álbuns:</h3>
+                <h2 class="uk-text-center">Álbuns</h2>
                 <p *ngIf="loadingArtist">Carregando lista de álbuns do artista...</p>
                 <ul>
                     <li *ngFor="let album of albuns">
