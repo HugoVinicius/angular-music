@@ -1,3 +1,7 @@
 .componente-page{
   min-height: 300px;
 }
+
+.grid-mod {
+  padding: 20px !important;
+}

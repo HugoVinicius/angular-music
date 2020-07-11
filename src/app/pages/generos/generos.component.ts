@@ -10,8 +10,8 @@ export class GenerosComponent implements OnInit {
   genreSel: string = "";
   searchLabel: string;
 
-  constructor() { 
-      this.searchLabel = "Ou digite um nome de gênero para pesquisar: ";
+  constructor() {
+      this.searchLabel = "Pesquisar por genero: ";
       this.genres = ["Blues", "Eletrônica", "Heavy Metal", "Hip Hop", "Jazz", "Pop", "Rap", "Reggae", "Rock", "Sertanejo"];
   }
 
@@ -20,6 +20,10 @@ export class GenerosComponent implements OnInit {
 
   onClickGenre(genreName) {
     this.genreSel = this.removeSpecialChars(genreName);
+
+    try {
+      document.querySelector('#resultado').scrollIntoView();
+    } catch (e) { }
   }
 
   handleValueSearch(text: string) {

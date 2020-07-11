@@ -1,13 +1,21 @@
 <div class="uk-container componente-page">
   <div>
-    <p>Escolha um gênero musical</p>
-    <ul>
-        <li *ngFor="let genre of genres">
-            <a (click)="onClickGenre(genre)">{{genre}}</a>
-        </li>
-    </ul>
-    <app-search [searchLabel]="searchLabel" (onTextSearch)="handleValueSearch($event)"></app-search>
-
-    <app-result-artists [searchText]="genreSel" [searchByName]="false"></app-result-artists>
+    <h3 class="uk-text-center">Escolha um gênero musical</h3>
+      <div class="uk-flex-center">
+        <app-search [searchLabel]="searchLabel" (onTextSearch)="handleValueSearch($event)"></app-search>
+      </div>
+    <hr>
+      <div class="uk-child-width-1-6@m uk-grid-small uk-flex-center uk-grid-match uk-cen uk-text-center" uk-grid>
+        <div *ngFor="let genre of genres">
+            <div class="uk-card uk-card-default uk-card-body grid-mod">
+                <h3 class="uk-card-title"><a (click)="onClickGenre(genre)">{{genre}}</a></h3>
+                <img src="assets/img/generos.jpg" width="50" alt="Imagem muisc">
+            </div>
+        </div>
+      </div>
+      <hr>
+      <div id="resultado">
+        <app-result-artists [searchText]="genreSel" [searchByName]="false"></app-result-artists>
+      </div>
 </div>
 </div>

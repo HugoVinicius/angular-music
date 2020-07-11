@@ -33,8 +33,7 @@ export class ResultArtistsComponent implements OnInit {
           json.results.artistmatches.artist.forEach(artist => this.setArtist(artist));
           this.loading = false;
         });
-      }
-      else{
+      } else {
         this.musicAPI.searchArtistsByGenre(this.searchText, 10, 1).subscribe(json => {
           console.log(json);
           json.topartists.artist.forEach(artist => this.setArtist(artist));

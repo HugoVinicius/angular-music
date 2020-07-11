@@ -1,5 +1,10 @@
 <div>
-    <label>{{searchLabel}}</label>
-    <input [(ngModel)]="valueInput" name="valueInput" />
-    <button (click)="onClickSearch()">Pesquisar</button>
+    <div class="uk-margin">
+      <label>{{searchLabel}}</label>
+      <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: search"></span>
+          <input [(ngModel)]="valueInput" class="uk-input uk-form-width-medium" name="valueInput"/>
+      </div>
+      <button class="uk-button uk-button-primary uk-button-medium" (click)="onClickSearch()">Pesquisar</button>
+  </div>
 </div>

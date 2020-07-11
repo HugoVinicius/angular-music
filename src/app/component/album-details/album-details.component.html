@@ -1,4 +1,4 @@
-<div>
+<div class="uk-container">
     <p *ngIf="loadingAlbum, else loaded">Carregando dados do álbum...</p>
     <ng-template #loaded>
         <div *ngIf="album, else unknown">
@@ -10,7 +10,7 @@
                 <p>Duração: {{album.duration}}</p>
                 <span *ngIf="album.summary">Descrição: {{album.summary}}</span>
             </div>
-    
+
             <div *ngIf="tracks">
                 <h3>Faixas ({{tracks.length}}):</h3>
                 <ol>
@@ -20,7 +20,7 @@
                 </ol>
             </div>
         </div>
-    
+
         <ng-template #unknown>
             <div>
                 <h3>Álbum não encontrado!</h3>

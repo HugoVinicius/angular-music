@@ -1,8 +1,9 @@
 <div>
     <div *ngIf="searchText">
-        <p>Resultado para: {{searchText}}</p>
+        <h3 class="uk-text-center">Resultado para: {{searchText}}</h3>
         <p *ngIf="loading">Carregando...</p>
-        <ul>
+
+        <ul class="uk-list uk-list-divider">
             <li *ngFor="let artist of listArtists">
                 <a routerLink="../artista/{{artist.id}}">
                     <span>{{artist.name}}</span>
