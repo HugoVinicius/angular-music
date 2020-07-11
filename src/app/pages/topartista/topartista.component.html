@@ -1,7 +1,7 @@
 <div class="uk-container componente-page">
-  <h3>TOP 100 - Artistas</h3>
+  <h3 class="uk-text-center">Top Artistas</h3>
   <p *ngIf="loading">Carregando...</p>
-  <ol>
+  <ol class="uk-list uk-list-striped uk-list-decimal">
       <li *ngFor="let artist of artists">
         <a routerLink="../artista/{{artist.id}}">
             <span>{{artist.name}}</span>
