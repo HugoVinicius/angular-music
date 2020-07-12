@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const API_KEY = '9c9825bd8831d74a3e5183de141b8fa8';
-const baseUrl = (method, params) => `http://ws.audioscrobbler.com/2.0/?api_key=${API_KEY}&format=json&method=${method}&lang=pt${params}`;
+const baseUrl = (method, params) => `https://ws.audioscrobbler.com/2.0/?api_key=${API_KEY}&format=json&method=${method}&lang=pt${params}`;
 
 // methods
 const methodTagTopArtists = 'tag.gettopartists';
