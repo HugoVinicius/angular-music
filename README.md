@@ -1,4 +1,11 @@
-# AngularMusic
+# Projeto Final disciplina Frameworks front end - Angular - Vue (FFA)
+
+## Publicado: https://appangularmusic.herokuapp.com/
+
+## Alunos
+
+- André Santos
+- Hugo Vinicius
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
