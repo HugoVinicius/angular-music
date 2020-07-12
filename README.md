@@ -11,23 +11,23 @@
 
 - Index
 
-![alt text](https://raw.githubusercontent.com/HugoVinicius/angular-music/blob/master/img-git/index.jpg)
+![alt text](https://github.com/HugoVinicius/angular-music/blob/master/img-git/index.jpg)
 
 - Generos
 
-![alt text](https://raw.githubusercontent.com/HugoVinicius/angular-music/blob/master/img-git/generos.jpg)
+![alt text](https://github.com/HugoVinicius/angular-music/blob/master/img-git/generos.jpg)
 
-![alt text](https://raw.githubusercontent.com/HugoVinicius/angular-music/blob/master/img-git/generos-busca.jpg)
+![alt text](https://github.com/HugoVinicius/angular-music/blob/master/img-git/generos-busca.jpg)
 
 - Artistas
 
-![alt text](https://raw.githubusercontent.com/HugoVinicius/angular-music/blob/master/img-git/artistas.jpg)
+![alt text](https://github.com/HugoVinicius/angular-music/blob/master/img-git/artistas.jpg)
 
-![alt text](https://raw.githubusercontent.com/HugoVinicius/angular-music/blob/master/img-git/detalhe-artistas.jpg)
+![alt text](https://github.com/HugoVinicius/angular-music/blob/master/img-git/detalhe-artistas.jpg)
 
 - Top Artistas
 
-![alt text](https://raw.githubusercontent.com/HugoVinicius/angular-music/blob/master/img-git/top-artistas.jpg)
+![alt text](https://github.com/HugoVinicius/angular-music/blob/master/img-git/top-artistas.jpg)
 
 ## Tecnologia
 
